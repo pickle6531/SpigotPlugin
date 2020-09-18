@@ -10,6 +10,12 @@ public class ExampleCommand implements CommandExecutor {
     public ExampleCommand(SpigotPlugin plugin) {
         this.plugin = plugin;
     }
+@EventHandler
+public void onUse(PlayerInteractEvent e) {
+Player p = e.getPlayer();
+if(p.getInventory().getItemInHand() != null && p.getInventory().getItemInHand().getType() == Material.BLAZE_ROD) {
+p.launchProjectile(Snowball.class);
+}
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
